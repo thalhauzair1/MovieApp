@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import MovieListAndSorting from './MovieListAndSorting';
 import TvListAndSorting from './TvShowListAndSorting';

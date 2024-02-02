@@ -23,7 +23,8 @@ const AppStack = () =>(
         }} />
         <Stack.Screen 
         name='Back To List'
-        component={ShowScreen}/>
+        component={ShowScreen}
+        />
         
     </Stack.Navigator>
 </NavigationContainer>

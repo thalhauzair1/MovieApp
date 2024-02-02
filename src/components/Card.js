@@ -1,9 +1,10 @@
 import React from "react";
 import { VStack, HStack, Image, Text, Button, ButtonText } from "@gluestack-ui/themed";
+import { StyleSheet } from "react-native";
 
-const Card = ({ object, navigation }) => (
-  <HStack gap={5}>
-    <Image
+const Card = ({ type, object, navigation }) => (
+  <HStack style={styles.cardContainer}>
+    <Image style={styles.cardImage}
       size="xl"
       alt="movie Image"
       borderRadius="$lg"
@@ -11,26 +12,46 @@ const Card = ({ object, navigation }) => (
         uri: `https://image.tmdb.org/t/p/w500/${object.poster_path}`,
       }}
     />
-    <VStack key={object.id} space="sm">
+    <VStack key={object.id} space="sm" style={styles.contentContainer}>
       {object.title ? (
         <Text>{object.title}</Text>
       ) : (
         <Text>{object.name}</Text>
       )}
       <Text>Popularity: {object.popularity}</Text>
-      <Text>Release Date: {object.release_date}</Text>
+      <Text>Release Date: {object.release_date || object.first_air_date
+}</Text>
       <Button
         size="lg"
         variant="solid"
         action="primary"
         isDisabled={false}
         isFocusVisible={false}
-        onPress={() => { navigation.navigate('Back To List', { object }) }}
+        onPress={() => { navigation.navigate('Back To List', { object,type }) }}
       >
         <ButtonText>More Details </ButtonText>
       </Button>
     </VStack>
   </HStack>
 );
+
+const styles= StyleSheet.create({
+  cardContainer:{
+    display:'flex',
+
+  },
+  cardImage: {
+    objectFit:'contain',
+    height:170  
+    
+  },
+  contentContainer:{
+    display:'flex',
+    flex: 2,
+    padding:10,
+    paddingRight:30
+  }
+})
+
 
 export default Card;

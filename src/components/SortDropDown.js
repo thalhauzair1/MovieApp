@@ -14,8 +14,8 @@ import {
 
 const SortDropDown = ({ onValueChange, options, width, defaultValue }) => {
   return (
-    <FormControl>
-      <Select onValueChange={onValueChange} defaultValue ={defaultValue}>
+    <FormControl pt={20}>
+      <Select onValueChange={onValueChange} defaultValue ={defaultValue} w={150} >
         <SelectTrigger width={width}> 
           <SelectInput placeholder="Select Sorting" />
         </SelectTrigger>

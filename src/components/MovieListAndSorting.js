@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Text, VStack } from '@gluestack-ui/themed';
+import { Text, VStack, styled } from '@gluestack-ui/themed';
 import Card from './Card'; 
 import { getMovies } from './api';
 import SortDropDown from './SortDropDown';
+import { ScrollView, StyleSheet } from 'react-native';
 
 const MovieListWithSorting = ({ navigation }) => {
   const [sortBy, setSortBy] = useState('popular');
@@ -39,7 +40,7 @@ const MovieListWithSorting = ({ navigation }) => {
   ];
 
   return (
-    <VStack space="md">
+    <VStack space="2xl">
       <SortDropDown onValueChange={handleSelectChange} options={sortingOptions} />
 
       
@@ -48,11 +49,13 @@ const MovieListWithSorting = ({ navigation }) => {
       ) : error ? (
         <Text>Error: {error}</Text>
       ) : movies && movies.length > 0 ? (
-        <VStack space="md">
+        <ScrollView>
+        <VStack space="md" style={styles.cardStyle}>
           {movies.map((movie) => (
-            <Card key={movie.id} object={movie} navigation={navigation} />
+            <Card key={movie.id} object={movie} type="movie" navigation={navigation} />
           ))}
         </VStack>
+        </ScrollView>
       ) : (
         <Text>No movies found.</Text>
       )}
@@ -60,4 +63,15 @@ const MovieListWithSorting = ({ navigation }) => {
   );
 };
 
+
+const styles = StyleSheet.create({
+  cardStyle:{
+    display:'flex',
+    gap:35
+  }
+
+
+})
+
 export default MovieListWithSorting;
+

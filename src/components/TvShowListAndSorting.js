@@ -6,6 +6,7 @@ import {
 import Card from './Card'; 
 import { getTvShows } from "./api";
 import SortDropDown from "./SortDropDown";
+import { ScrollView } from "react-native";
 
 const TvListAndSorting = ({ navigation }) => {
   const [sortBy, setSortBy] = useState("popular");
@@ -50,11 +51,13 @@ const TvListAndSorting = ({ navigation }) => {
       ) : error ? (
         <Text>Error: {error}</Text>
       ) : tvShows && tvShows.length > 0 ? (
+        <ScrollView>
         <VStack space="md">
           {tvShows.map((tvShow) => (
-            <Card key={tvShow.id} object={tvShow} navigation={navigation} />
+            <Card key={tvShow.id} object={tvShow} type="tv" navigation={navigation} />
           ))}
         </VStack>
+        </ScrollView>
       ) : (
         <Text>No TV shows found.</Text>
       )}

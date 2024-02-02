@@ -3,6 +3,7 @@ import SortDropDown from "./SortDropDown";
 import { useState } from "react";
 import { searchList } from "./api";
 import Card from "./Card";
+import { ScrollView } from "react-native";
 
 const SearchPage = ({navigation}) => {
     const [sortBy, setSortBy] = useState('movie');
@@ -37,6 +38,7 @@ const SearchPage = ({navigation}) => {
     };
     const sortingOptions = [
         { label: 'movie', value: 'movie' },
+        { label: 'tv', value: 'tv' },
         { label: 'multi', value: 'multi' },
 
     ];
@@ -77,11 +79,14 @@ const SearchPage = ({navigation}) => {
             ) : error ? (
                 <Text>Error: {error}</Text>
             ) : list && list.length > 0 ? (
+                <ScrollView  pagingEnabled>
                 <VStack space="md">
                     {list.map((singleList) => (
-                        <Card key={singleList.id} object={singleList} navigation={navigation} />
+                        <Card key={singleList.id} object={singleList} type={sortBy =="multi" ? singleList.media_type : sortBy}
+                        navigation={navigation} />
                     ))}
                 </VStack>
+                </ScrollView>
             ) : (
                 <Text>Nothing Found.</Text>
             )}
