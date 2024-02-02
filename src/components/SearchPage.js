@@ -43,12 +43,13 @@ const SearchPage = ({navigation}) => {
 
     ];
     return (
-        <VStack>
+        <VStack gap={10}>
+            <VStack>
             <Text> Search Movie/TV Show Name</Text>
-
-            <Input>
+ 
+            <Input w="80%" alignSelf="center" borderColor='$indigo600'>
                 <InputSlot pl="$3">
-                    <InputIcon as={SearchIcon} />
+                    <InputIcon as={SearchIcon} color="$indigo600"/>
                 </InputSlot>
                 <InputField
                     placeholder="Search..."
@@ -56,23 +57,28 @@ const SearchPage = ({navigation}) => {
                     onChangeText={handleInputChange}
                 />       
          </Input>
+         </VStack>
+         <VStack gap={10}>
             <Text>Choose Search Type </Text>
-            <HStack gap={50} alignItems="center" justifyContent="center" >
-                <SortDropDown onValueChange={handleSelectChange} options={sortingOptions} width={200} defaultValue="movie" />
+            <HStack gap={20} alignItems="center" justifyContent="center" >
+                <SortDropDown onValueChange={handleSelectChange} options={sortingOptions} width="70vw" defaultValue="movie" />
 
                 <Button
+                bg="$indigo600"
                     size="md"
                     variant="solid"
                     action="primary"
                     isDisabled={false}
                     isFocusVisible={false}
                     onPress={handleButtonPress}
+                    alignSelf="flex-end"  
                 >
                     <ButtonText>Search </ButtonText>
                     <ButtonIcon as={SearchIcon} />
                 </Button>
             </HStack>
             <Text>Please select a search Type</Text>
+            </VStack>
 
             {loading ? (
                 <Text  m={125}  fontWeight="$bold" fontSize="$xl">Please Initiate A Search</Text>

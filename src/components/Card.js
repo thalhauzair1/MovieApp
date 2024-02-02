@@ -22,6 +22,7 @@ const Card = ({ type, object, navigation }) => (
       <Text>Release Date: {object.release_date || object.first_air_date
 }</Text>
       <Button
+       bg="$indigo600"
         size="lg"
         variant="solid"
         action="primary"

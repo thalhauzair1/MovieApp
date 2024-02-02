@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useEffect, useState } from 'react';
 import { ArrowLeftIcon, HStack, Image, Text, VStack } from "@gluestack-ui/themed";
 import { useRoute } from '@react-navigation/native';
 import { findItembyID } from '../api';
+import { ScrollView, StyleSheet } from 'react-native';
 
 const ShowScreen = ({ navigation }) => {
   const route = useRoute();
@@ -53,9 +54,10 @@ const ShowScreen = ({ navigation }) => {
   }
 
   return (
-    <VStack alignItems='center' gap={55}>
+    <ScrollView>
+    <VStack alignItems='center' gap={20}>
       <Text> </Text>
-      <VStack gap={40} alignItems='center' justifyContent='center'>
+      <VStack gap={40} alignItems='center' >
         {item.title || item.name ? (
             <Text fontWeight='bold'>{item.title ? item.title : item.name}
             </Text>
@@ -66,11 +68,12 @@ const ShowScreen = ({ navigation }) => {
           size="2xl"
           alt="movie Image"
           borderRadius="$lg"
+          style={styles.imageStyle}
           source={{
             uri: `https://image.tmdb.org/t/p/w500/${item.poster_path}`,
           }}
         />
-        <Text>{item.overview || 'No overview available'}</Text>
+        <Text p={20}>{item.overview || 'No overview available'}</Text>
         <HStack gap={6}>
           <Text>Popularity: {item.popularity}</Text>
           <Text>Release Date: {item.release_date || item.first_air_date
@@ -78,7 +81,15 @@ const ShowScreen = ({ navigation }) => {
         </HStack>
       </VStack>
     </VStack>
+    </ScrollView>
+
   );
 };
+
+const styles = StyleSheet.create({
+  imageStyle:{
+    objectFit:'contain'
+  }
+})
 
 export default ShowScreen;

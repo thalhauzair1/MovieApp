@@ -20,6 +20,7 @@ const Home = ({ navigation }) => {
 
   const renderTabBar = (props) => (
     <TabBar
+    activeColor='$indigo600'
       {...props}
       indicatorStyle={{ backgroundColor: 'blue' }}
       style={{ backgroundColor: 'white' }}

@@ -14,7 +14,7 @@ const AppStack = () =>(
         options={{
             title: "Movies App",
             headerStyle:{
-                backgroundColor:'#2c3e50'
+                backgroundColor:'Indigo600'
             },
             headerTitleStyle:{
                 color: '#fff'

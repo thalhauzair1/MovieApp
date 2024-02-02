@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, VStack, styled } from '@gluestack-ui/themed';
+import { Text, VStack } from '@gluestack-ui/themed';
 import Card from './Card'; 
 import { getMovies } from './api';
 import SortDropDown from './SortDropDown';
