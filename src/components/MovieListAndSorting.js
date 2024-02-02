@@ -52,7 +52,7 @@ const MovieListWithSorting = ({ navigation }) => {
         <ScrollView>
         <VStack space="md" style={styles.cardStyle}>
           {movies.map((movie) => (
-            <Card key={movie.id} object={movie} type="movie" navigation={navigation} />
+            <Card key={movie.id} id={movie.id} object={movie} type="movie" navigation={navigation} />
           ))}
         </VStack>
         </ScrollView>

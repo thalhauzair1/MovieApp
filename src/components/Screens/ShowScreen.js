@@ -1,12 +1,12 @@
 import React, { useLayoutEffect, useEffect, useState } from 'react';
-import { ArrowLeftIcon, HStack, Image, Text, VStack } from "@gluestack-ui/themed";
+import {  HStack, Image, Text, VStack } from "@gluestack-ui/themed";
 import { useRoute } from '@react-navigation/native';
 import { findItembyID } from '../api';
 import { ScrollView, StyleSheet } from 'react-native';
 
 const ShowScreen = ({ navigation }) => {
   const route = useRoute();
-  const { object } = route.params;
+  const { id } = route.params;
   const { type } = route.params;
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,8 @@ const ShowScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const fetchedItems = await findItembyID(object.id, type);
+        console.log(type)
+        const fetchedItems = await findItembyID(id, type);
         setItem(fetchedItems);
         console.log(fetchedItems)
 
@@ -28,7 +29,7 @@ const ShowScreen = ({ navigation }) => {
     };
 
     fetchItems();
-  }, [object.id]);
+  }, [id]);
 
   useLayoutEffect(() => {
     if (item) {

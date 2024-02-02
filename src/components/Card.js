@@ -2,7 +2,7 @@ import React from "react";
 import { VStack, HStack, Image, Text, Button, ButtonText } from "@gluestack-ui/themed";
 import { StyleSheet } from "react-native";
 
-const Card = ({ type, object, navigation }) => (
+const Card = ({ id, type, object, navigation }) => (
   <HStack style={styles.cardContainer}>
     <Image style={styles.cardImage}
       size="xl"
@@ -12,7 +12,7 @@ const Card = ({ type, object, navigation }) => (
         uri: `https://image.tmdb.org/t/p/w500/${object.poster_path}`,
       }}
     />
-    <VStack key={object.id} space="sm" style={styles.contentContainer}>
+    <VStack key={id} space="sm" style={styles.contentContainer}>
       {object.title ? (
         <Text>{object.title}</Text>
       ) : (
@@ -28,7 +28,7 @@ const Card = ({ type, object, navigation }) => (
         action="primary"
         isDisabled={false}
         isFocusVisible={false}
-        onPress={() => { navigation.navigate('Back To List', { object,type }) }}
+        onPress={() => { navigation.navigate('Back To List', { id,type }) }}
       >
         <ButtonText>More Details </ButtonText>
       </Button>

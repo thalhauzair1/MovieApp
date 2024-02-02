@@ -54,7 +54,7 @@ const TvListAndSorting = ({ navigation }) => {
         <ScrollView>
         <VStack space="md">
           {tvShows.map((tvShow) => (
-            <Card key={tvShow.id} object={tvShow} type="tv" navigation={navigation} />
+            <Card key={tvShow.id} id={tvShow.id} object={tvShow} type="tv" navigation={navigation} />
           ))}
         </VStack>
         </ScrollView>

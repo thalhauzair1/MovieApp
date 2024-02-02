@@ -81,14 +81,14 @@ const SearchPage = ({navigation}) => {
             </VStack>
 
             {loading ? (
-                <Text  m={125}  fontWeight="$bold" fontSize="$xl">Please Initiate A Search</Text>
+                <Text  m={125}  fontWeight="$bold" fontSize="$xl">Loading...</Text>
             ) : error ? (
                 <Text>Error: {error}</Text>
             ) : list && list.length > 0 ? (
                 <ScrollView  pagingEnabled>
                 <VStack space="md">
                     {list.map((singleList) => (
-                        <Card key={singleList.id} object={singleList} type={sortBy =="multi" ? singleList.media_type : sortBy}
+                        <Card key={singleList.id} id={singleList.id} object={singleList} type={sortBy =="multi" ? singleList.media_type : sortBy}
                         navigation={navigation} />
                     ))}
                 </VStack>
